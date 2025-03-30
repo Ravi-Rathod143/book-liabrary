@@ -12,12 +12,21 @@ function AddBook() {
 
   const dispatch = useDispatch();
   const navigate = useNavigate();
-
   const handleSubmit = (e) => {
     e.preventDefault();
   
     if (!title || !author || !description || !rating || !category) {
       alert("All fields are required!");
+      return;
+    }
+  
+    if (title.length < 3) {
+      alert("Title should be at least 3 characters long.");
+      return;
+    }
+  
+    if (!/^[a-zA-Z\s]+$/.test(author)) {
+      alert("Author name should contain only alphabets and spaces.");
       return;
     }
   
