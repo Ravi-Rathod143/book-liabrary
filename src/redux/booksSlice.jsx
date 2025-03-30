@@ -11,7 +11,7 @@ const booksSlice = createSlice({
   ],
   reducers: {
     addBook: (state, action) => {
-      state.push({ id: Date.now(), ...action.payload }); // 🛠 Fix: Use Date.now() for unique ID
+      state.push({ id: Date.now(), ...action.payload }); // Fix: Use Date.now() for unique ID
     },
     removeBook: (state, action) => {
       return state.filter(book => book.id !== action.payload);
