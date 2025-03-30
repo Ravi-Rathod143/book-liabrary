@@ -160,6 +160,39 @@ body {
     text-decoration: underline;
   }
 
+
+
+  .notfound-container {
+    text-align: center;
+    margin-top: 50px;
+  }
+  
+  .notfound-title {
+    font-size: 2.5rem;
+    color: #ff4757;
+  }
+  
+  .notfound-text {
+    font-size: 1.2rem;
+    color: #555;
+  }
+  
+  .notfound-btn {
+    display: inline-block;
+    margin-top: 20px;
+    padding: 10px 20px;
+    background-color: #3498db;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    font-size: 1.1rem;
+  }
+  
+  .notfound-btn:hover {
+    background-color: #2980b9;
+  }
+  
+
 /* General Styling */
 .home-container {
   text-align: center;
