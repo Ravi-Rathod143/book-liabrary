@@ -17,7 +17,7 @@ A simple React-based Online Library System that allows users to browse books, vi
 git clone https://github.com/Ravi-Rathod143/book-liabrary.
 
 ```sh
-https://onlineliabrary.netlify.app/
+https://onlineliabraryss.netlify.app/
 
 cd online-library-system
 
