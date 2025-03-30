@@ -15,24 +15,41 @@ function AddBook() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-
+  
     if (!title || !author || !description || !rating || !category) {
       alert("All fields are required!");
       return;
     }
-
+  
+    if (description.length < 10) {
+      alert("Description should be at least 10 characters long.");
+      return;
+    }
+  
+    if (rating < 1 || rating > 5) {
+      alert("Rating must be between 1 and 5.");
+      return;
+    }
+  
+    const validCategories = ["fiction", "non-fiction", "sci-fi", "mystery"];
+    if (!validCategories.includes(category.toLowerCase())) {
+      alert("Invalid category! Please choose from Fiction, Non-Fiction, Sci-Fi, or Mystery.");
+      return;
+    }
+  
     dispatch(
       addBook({
         title,
         author,
         description,
         rating,
-        category: category.toLowerCase(), // **Fix: Convert to lowercase before storing**
+        category: category.toLowerCase(),
       })
     );
-
+  
     navigate("/books");
   };
+  
 
   return (
     <div>
