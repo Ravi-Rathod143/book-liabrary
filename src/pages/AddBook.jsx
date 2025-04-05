@@ -12,40 +12,41 @@ function AddBook() {
 
   const dispatch = useDispatch();
   const navigate = useNavigate();
+
   const handleSubmit = (e) => {
     e.preventDefault();
-  
+
     if (!title || !author || !description || !rating || !category) {
       alert("All fields are required!");
       return;
     }
-  
+
     if (title.length < 3) {
       alert("Title should be at least 3 characters long.");
       return;
     }
-  
+
     if (!/^[a-zA-Z\s]+$/.test(author)) {
       alert("Author name should contain only alphabets and spaces.");
       return;
     }
-  
+
     if (description.length < 10) {
       alert("Description should be at least 10 characters long.");
       return;
     }
-  
+
     if (rating < 1 || rating > 5) {
       alert("Rating must be between 1 and 5.");
       return;
     }
-  
+
     const validCategories = ["fiction", "non-fiction", "sci-fi", "mystery"];
     if (!validCategories.includes(category.toLowerCase())) {
-      alert("Invalid category! Please choose from Fiction, Non-Fiction, Sci-Fi, or Mystery.");
+      alert("Invalid category! Please choose from the list.");
       return;
     }
-  
+
     dispatch(
       addBook({
         title,
@@ -55,10 +56,9 @@ function AddBook() {
         category: category.toLowerCase(),
       })
     );
-  
+
     navigate("/books");
   };
-  
 
   return (
     <div>
@@ -96,14 +96,21 @@ function AddBook() {
           className="input-field"
           required
         />
-        <input
-          type="text"
-          placeholder="Category"
+
+        {/* ✅ Category Dropdown */}
+        <select
           value={category}
           onChange={(e) => setCategory(e.target.value)}
           className="input-field"
           required
-        />
+        >
+          <option value="">-- Select Category --</option>
+          <option value="fiction">Fiction</option>
+          <option value="non-fiction">Non-Fiction</option>
+          <option value="sci-fi">Sci-Fi</option>
+          <option value="mystery">Mystery</option>
+        </select>
+
         <button type="submit" className="btn">Add Book</button>
       </form>
     </div>

@@ -1,11 +1,11 @@
 import React from "react";
 import { useParams, Link } from "react-router-dom";
 import { useSelector } from "react-redux";
-import "../styles.css"; // Import the CSS file
+import "../styles.css";
 
 function BookDetails() {
   const { id } = useParams();
-  const book = useSelector((state) => state.books.find((b) => b.id === Number(id)));
+  const book = useSelector((state) => state.books.find((b) => b.id === id)); // id is string, match directly
 
   if (!book) {
     return <h2 className="not-found">❌ Book Not Found</h2>;
