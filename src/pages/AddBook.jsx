@@ -3,19 +3,23 @@ import { useDispatch } from "react-redux";
 import { addBook } from "../redux/booksSlice";
 import { useNavigate } from "react-router-dom";
 
+// AddBook component allows the user to add a new book to the store
 function AddBook() {
+  // State variables for form fields
   const [title, setTitle] = useState("");
   const [author, setAuthor] = useState("");
   const [description, setDescription] = useState("");
   const [rating, setRating] = useState("");
   const [category, setCategory] = useState("");
 
-  const dispatch = useDispatch();
-  const navigate = useNavigate();
+  const dispatch = useDispatch(); // Hook to dispatch Redux actions
+  const navigate = useNavigate(); // Hook to navigate programmatically
 
+  // Function to handle form submission
   const handleSubmit = (e) => {
-    e.preventDefault();
+    e.preventDefault(); // Prevent default form submission
 
+    // Validation checks
     if (!title || !author || !description || !rating || !category) {
       alert("All fields are required!");
       return;
@@ -47,6 +51,7 @@ function AddBook() {
       return;
     }
 
+    // Dispatch addBook action to Redux store
     dispatch(
       addBook({
         title,
@@ -57,6 +62,7 @@ function AddBook() {
       })
     );
 
+    // Navigate to /books page after adding book
     navigate("/books");
   };
 
@@ -64,6 +70,7 @@ function AddBook() {
     <div>
       <h1>Add a New Book</h1>
       <form onSubmit={handleSubmit} className="form">
+        {/* Input for Book Title */}
         <input
           type="text"
           placeholder="Title"
@@ -72,6 +79,8 @@ function AddBook() {
           className="input-field"
           required
         />
+
+        {/* Input for Author Name */}
         <input
           type="text"
           placeholder="Author"
@@ -80,6 +89,8 @@ function AddBook() {
           className="input-field"
           required
         />
+
+        {/* Input for Description */}
         <input
           type="text"
           placeholder="Description"
@@ -88,6 +99,8 @@ function AddBook() {
           className="input-field"
           required
         />
+
+        {/* Input for Rating */}
         <input
           type="number"
           placeholder="Rating (1-5)"
@@ -97,7 +110,7 @@ function AddBook() {
           required
         />
 
-        {/* ✅ Category Dropdown */}
+        {/* Dropdown for Category */}
         <select
           value={category}
           onChange={(e) => setCategory(e.target.value)}
@@ -111,6 +124,7 @@ function AddBook() {
           <option value="mystery">Mystery</option>
         </select>
 
+        {/* Submit Button */}
         <button type="submit" className="btn">Add Book</button>
       </form>
     </div>
